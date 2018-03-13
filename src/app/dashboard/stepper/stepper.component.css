@@ -1,0 +1,12 @@
+.stepper{
+    margin-top:100px;
+    /* margin-left: 300px;
+    margin-right: 300px; */
+    max-width: 100%;
+    background-color: plum;
+}
+
+.stepper-content{
+    background-color: ghostwhite
+
+}

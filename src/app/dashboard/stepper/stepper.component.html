@@ -1,0 +1,47 @@
+<div class="stepper">
+<mat-horizontal-stepper class="stepper-content"  #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>ORGANISATION</ng-template>
+      <mat-form-field>
+        <input #org matInput placeholder="Name of the organisation"  formControlName="firstCtrl" (onKeypress)="getReport(value)" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext  (click)="newOrg(org.value)">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>COHORT</ng-template>
+      <mat-form-field>
+        <mat-select #cohert placeholder="Cohert" formControlName="secondCtrl" required>
+          <mat-option  *ngFor="let item of Cohert" [value]="item.value">
+            {{ item.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+       <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="newOrg(cohert.value)">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+    <ng-template matStepLabel>WAVE</ng-template>
+    <mat-form-field>
+      <mat-select #wave placeholder="Waves"  formControlName="thirdCtrl" required>
+        <mat-option *ngFor="let item of Waves" [value]="item.value" >
+          {{ item.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="getReport(wave.value)">Go</button>
+    </div>
+  </form>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>
